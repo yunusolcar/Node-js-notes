@@ -7,4 +7,3 @@ function alan(daire) {
 }
 
 alan(yaricap[0] * 1);
-
