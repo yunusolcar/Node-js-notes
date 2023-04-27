@@ -76,3 +76,5 @@ addBock({
      name: 'Book 4',
      author: 'Author D'
 }, listBooks);
+
+//Callback fonksiyonu başka bir fonksiyon içerisinde argüman olarak kullanılabilen fonksiyon anlamına gelmektedir.
