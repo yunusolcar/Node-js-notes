@@ -20,7 +20,7 @@ fs.appendFile('password.txt', '\n New Secret Password :D', 'utf8', err => {
      console.log('Dosyaya veri başarıyla eklendi');
 });
 
-//Dosyadan Veri Silme - Delete data to file
+//Dosya Silme - Delete file
 fs.unlink('username.json', err => {
      if (err) console.log(err);
      console.log('Dosya başarıyla silindi');
