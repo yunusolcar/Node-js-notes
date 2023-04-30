@@ -12,7 +12,7 @@ fs.readFile('employees.json', 'utf8', err => {
      console.log('File readed');
 });
 
-fs.appendFile('employees.json', '\n {"name": "Employee 1 : Yunus", "salary": 3000}', 'utf8', err => {
+fs.appendFile('employees.json', '\n {"name": "Employee 2 : Yunus", "salary": 3000}', 'utf8', err => {
      if (err) console.log(err);
      console.log('Updated');
 });
