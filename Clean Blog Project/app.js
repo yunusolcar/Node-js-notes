@@ -22,12 +22,12 @@ app.get('/', async (req, res) => {
   });
 });
 app.get('/about', (req, res) => {
-  res.render('/about');
+  res.render('about');
 });
 app.get('/add_post', (req, res) => {
-  res.render('/add_post');
+  res.render('add_post');
 });
-app.post('/post', async (req, res) => {
+app.post('/posts', async (req, res) => {
   await Post.create(req.body);
   res.redirect('/');
 });
