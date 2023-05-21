@@ -1,9 +1,8 @@
 <%- include('partials/_header') -%>
 <body>
-
   <!-- Navigation -->
   <%- include('partials/_navigation') -%>
-  
+
   <!-- Page Header -->
   <header class="masthead" style="background-image: url('img/home-bg.jpg')">
     <div class="overlay"></div>
@@ -21,21 +20,18 @@
 
   <!-- Main Content -->
   <div class="container">
-    <% for(let i = 0; i< posts.length;i++) { %> 
+    <% for(let i = 0; i< posts.length;i++) { %>
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-preview">
           <a href="/posts/<%= posts[i]._id%>">
-            <h2 class="post-title">
-  <%= posts[i].title %>
-            </h2>
-            <h3 class="post-subtitle">
-              <%= posts[i].detail %>
-            </h3>
+            <h2 class="post-title"><%= posts[i].title %></h2>
+            <h3 class="post-subtitle"><%= posts[i].detail %></h3>
           </a>
-          <p class="post-meta">Posted by
+          <p class="post-meta">
+            Posted by
             <a href="/posts/<%= posts[i]._id%>">Start Bootstrap</a>
-            <on September 24, 2019></p>
+          </p>
         </div>
         <!-- Pager -->
         <div class="clearfix">
@@ -46,13 +42,8 @@
     <% } %>
   </div>
 
-  <hr>
-
   <!-- Footer -->
   <%- include('partials/_footer') -%>
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
-
 </body>
-
-</html>

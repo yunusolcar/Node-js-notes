@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const Post = require('./models/Post');
+const blogController = require('./controllers/blogControllers');
+const pageController = require('./controllers/pageControllers');
 
 //Connect to Db
 mongoose.connect('mongodb://127.0.0.1:27017/cleanblog-test-db');
@@ -15,32 +17,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Routers
-app.get('/', async (req, res) => {
-  const posts = await Post.find({});
-  res.render('index', {
-    posts,
-  });
-});
+app.get('/', blogController.getAllPost);
+app.get('/posts/:id', blogController.getPost);
 
-app.get('/posts/:id', async (req, res) => {
-  const post = await Post.findById(req.params.id);
-  res.render('post',{
-    post
-  });
-});
-
-app.get('/about', (req, res) => {
-  res.render('about');
-});
-
-app.get('/add_post', (req, res) => {
-  res.render('add_post');
-});
-
-app.post('/posts', async (req, res) => {
-  await Post.create(req.body);
-  res.redirect('/');
-});
+app.get('/about', pageController.getAboutPage);
+app.get('/add_post', pageController.getAddPage);
+app.post('/posts', pageController.getPostPage);
 
 //Port
 const port = 3000;
