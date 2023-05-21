@@ -1,28 +1,40 @@
 const express = require('express');
-const app = express();
-const path = require('path');
 const mongoose = require('mongoose');
-const Post = require('./models/Post');
+const fileUpload = require('express-fileupload');
+const methodOverride = require('method-override');
+const ejs = require('ejs');
 const blogController = require('./controllers/blogControllers');
 const pageController = require('./controllers/pageControllers');
+
+const app = express();
 
 //Connect to Db
 mongoose.connect('mongodb://127.0.0.1:27017/cleanblog-test-db');
 
+//Template Engine
 app.set('view engine', 'ejs');
 
-//Middleware
+//Middlewares
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(fileUpload());
+app.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET'],
+  })
+);
 
-//Routers
-app.get('/', blogController.getAllPost);
+//Routes
+app.get('/', blogController.getAllPosts);
 app.get('/posts/:id', blogController.getPost);
+app.post('/posts/', blogController.createPost);
+app.put('/posts/:id', blogController.updatePost);
+app.delete('/posts/:id', blogController.deletePost);
 
 app.get('/about', pageController.getAboutPage);
 app.get('/add_post', pageController.getAddPage);
-app.post('/posts', pageController.getPostPage);
+app.get('/posts/edit/:id', pageController.getEditPage);
 
 //Port
 const port = 3000;
