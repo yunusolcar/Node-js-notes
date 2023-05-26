@@ -10,7 +10,7 @@ const app = express();
 
 //Connect to Db
 mongoose.connect(
-    'mongodb+srv://Cluster1:QiFwp16uflf7ZUaj@cluster1.2fyhkq4.mongodb.net/?retryWrites=true&w=majority', {
+    'mongodb+srv://Cluster1:QiFwp16uflf7ZUaj@cluster1.2fyhkq4.mongodb.net/test?retryWrites=true&w=majority', {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
