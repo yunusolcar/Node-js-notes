@@ -9,14 +9,16 @@ const pageController = require('./controllers/pageControllers');
 const app = express();
 
 //Connect to Db
-mongoose.connect('mongodb://127.0.0.1:27017/cleanblog-test-db');
+mongoose.connect('mongodb+srv://Cluster1:QiFwp16uflf7ZUaj@cluster1.2fyhkq4.mongodb.net/?retryWrites=true&w=majority');
 
 //Template Engine
 app.set('view engine', 'ejs');
 
 //Middlewares
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 app.use(fileUpload());
 app.use(
